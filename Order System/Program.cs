@@ -154,7 +154,7 @@ namespace Order_System
                 table.AddRow(product["name"], "£"+Convert.ToSingle(product["price"]), item[1], "£"+Convert.ToSingle(product["price"])* Convert.ToSingle(item[1]));
             }
             table.Write();
-            Console.WriteLine("The total cost for this order was £{0}",total);
+            Console.WriteLine(" The total cost for this order was £{0}",total);
         }
         public static void GetMeniu()
         {
@@ -425,6 +425,7 @@ namespace Order_System
             Step1:
             Console.Clear();
             DrawBanner();
+            Console.WriteLine();
             Console.WriteLine(Properties.Resources.Help);
             Console.Write("#:");
             switch (Console.ReadLine().ToString().ToLower())
@@ -454,6 +455,7 @@ namespace Order_System
         {
             LoopWrongChar:
             DrawBanner();
+            Console.WriteLine();
             Console.Write("Do you already have an account? (Y|N):");
             switch (Console.ReadKey().Key)
             {
@@ -637,6 +639,7 @@ namespace Order_System
             Main:
             Console.Clear();
             DrawBanner();
+            Console.WriteLine();
             Console.WriteLine("                         We have few commands to use our software.\n");
             Console.WriteLine("[/history] - This command will show to you, your last orders.");
             Console.WriteLine("[/basket]  - This command will show to you, your current basket.");
@@ -651,13 +654,15 @@ namespace Order_System
                     {
                         Step:
                         Console.Clear();
-                        Console.WriteLine("Your details are here.");
-                        Console.WriteLine("First Name: {0}", client.Data["first_name"].Trim());
-                        Console.WriteLine("Last Name: {0}", client.Data["last_name"].Trim());
-                        Console.WriteLine("Email: {0}", client.Data["email"].Trim());
-                        Console.WriteLine("Number: {0}", client.Data["number"].Trim());
-                        Console.WriteLine("Address: {0}", client.Data["address"].Trim());
-                        Console.WriteLine("Postcode: {0}", client.Data["postcode"].Trim());
+                        Console.WriteLine("                         Your details are here.");
+                        Console.WriteLine();
+                        Console.WriteLine("First Name : {0}", client.Data["first_name"].Trim());
+                        Console.WriteLine("Last Name  : {0}", client.Data["last_name"].Trim());
+                        Console.WriteLine("Email      : {0}", client.Data["email"].Trim());
+                        Console.WriteLine("Number     : {0}", client.Data["number"].Trim());
+                        Console.WriteLine("Address    : {0}", client.Data["address"].Trim());
+                        Console.WriteLine("Postcode   : {0}", client.Data["postcode"].Trim());
+                        Console.WriteLine();
                         Console.WriteLine("Use [/back] to go to main meniu.");
                         Console.Write("#:");
                         if(Console.ReadLine().ToLower()=="/back")
@@ -674,9 +679,10 @@ namespace Order_System
                         AddAgain:
                         Console.Clear();
                         Database.GetMeniu();
-                        Console.WriteLine("If you want to add a product in basket, you need to use this command:");
-                        Console.WriteLine("Ex: /add [ID] [Quantity] "+Environment.NewLine+ "[ID]=Unique ID from meniu."+Environment.NewLine+"[Quantity]=How many products do you want to buy.");
-                        Console.WriteLine("If you want to go to main menu, you need to use [/back].");
+                        Console.WriteLine(" If you want to add a product in basket, you need to use this command:");
+                        Console.WriteLine();
+                        Console.WriteLine("     Ex: /add [ID] [Quantity] "+Environment.NewLine+ "       [ID]       = Unique ID from meniu."+Environment.NewLine+"       [Quantity] = How many products do you want to buy.");
+                        Console.WriteLine("\n If you want to go to main menu, you need to use [/back].");
                         Console.Write("#:");
                         var data = Console.ReadLine();
                         var command = data.Split(' ');
@@ -737,11 +743,12 @@ namespace Order_System
                         }
                         table.Write();
                         Console.WriteLine();
-                        Console.WriteLine("The total price is: £{0}",total);
-                        Console.WriteLine("/edit [ID] [New Quantity] for edit quantity.");
-                        Console.WriteLine("/remove [ID] - Remove a product from basket.");
-                        Console.WriteLine("/checkout - Send order to shop.");
-                        Console.WriteLine("/back - Go to main menu.");
+                        Console.WriteLine(" The total price is: £{0}",total);
+                        Console.WriteLine(" /edit [ID] [New Quantity] - Edit quantity.");
+                        Console.WriteLine();
+                        Console.WriteLine(" /remove [ID] - Remove a product from basket.");
+                        Console.WriteLine(" /checkout    - Send order to shop.");
+                        Console.WriteLine(" /back        - Go to main menu.");
                         Console.Write("#:");
                         var read = Console.ReadLine();
                         var command = read.Split(' ');
@@ -819,8 +826,8 @@ namespace Order_System
                         Step:
                         Console.Clear();
                         Database.GetHistoryOrders(Convert.ToInt32(client.Data["id"]));
-                        Console.WriteLine("/view [ID] - View more about order.");
-                        Console.WriteLine("/back - Go to main menu.");
+                        Console.WriteLine(" /view [ID] - View more about order.");
+                        Console.WriteLine(" /back      - Go to main menu.");
                         Console.Write("#:");
                         var data = Console.ReadLine();
                         var command = data.Split(' ');
@@ -837,7 +844,7 @@ namespace Order_System
                                         Step1:
                                         Console.Clear();
                                         Database.CheckHistoryOrderByID(Convert.ToInt32(command[1]));
-                                        Console.WriteLine("/back - Go to all history orders.");
+                                        Console.WriteLine(" /back - Go to all history orders.");
                                         Console.Write("#:");
                                         if(Console.ReadLine().ToLower()=="/back")
                                         {

@@ -1,6 +1,6 @@
 			Welcome to our online store.
 	
-In this menu we help you understand what this program does and how it is used.
+In this menu we help you to understand what this program does and how it is used.
 When you use the program you must follow the instructions from the main menu.
 	There is a user guide on any page of the application.
 		The program is intended for our store's customers. 
